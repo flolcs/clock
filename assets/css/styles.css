@@ -30,13 +30,64 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
 }
 
 /*=============== MAIN ===============*/
+main {
+  width: 100vw;
+  height: 100vh;
+}
+
+.preloader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color3);
+  animation: blur 1.5s;
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(0);
+  }
+  50% {
+    filter: blur(2px);
+  }
+  100% {
+    filter: blur(10px);
+  }
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #ff2972;
+  border-right: 16px solid #fee800;
+  border-bottom: 16px solid #04fc43;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 #time {
+  position: absolute;
   display: flex;
   gap: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #time .circle {
@@ -82,7 +133,7 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .dots::before {
@@ -102,9 +153,10 @@ span {
   text-transform: uppercase;
 }
 
+
 /*=============== RESPONSIVE ===============*/
 @media (min-width: 0px) and (max-width: 644px) {
   #time {
     flex-direction: column;
 }
-}
+} 

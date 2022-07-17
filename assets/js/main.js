@@ -15,6 +15,12 @@ setInterval(() => {
   let m = new Date().getMinutes();
   let s = new Date().getSeconds();
 
+  function timeloader() {
+    const loader = document.querySelector(".preloader");
+    loader.style.display = "none";
+  }
+  setTimeout(timeloader, 1500);
+
   // add zero before single number
   h = h < 10 ? "0" + h : h;
   m = m < 10 ? "0" + m : m;
