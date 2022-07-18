@@ -1,3 +1,11 @@
+// LOADER
+function timeloader() {
+  const loader = document.querySelector(".preloader");
+  loader.style.display = "none";
+}
+setTimeout(timeloader, 1500);
+
+// TIME
 setInterval(() => {
   let hours = document.getElementById("hours");
   let minutes = document.getElementById("minutes");
@@ -14,12 +22,6 @@ setInterval(() => {
   let h = new Date().getHours();
   let m = new Date().getMinutes();
   let s = new Date().getSeconds();
-
-  function timeloader() {
-    const loader = document.querySelector(".preloader");
-    loader.style.display = "none";
-  }
-  setTimeout(timeloader, 1500);
 
   // add zero before single number
   h = h < 10 ? "0" + h : h;
@@ -38,3 +40,77 @@ setInterval(() => {
   min_dot.style.transform = `rotate(${m * 6}deg)`;
   sec_dot.style.transform = `rotate(${s * 6}deg)`;
 });
+
+// CHRONO
+let tps_chrono = document.getElementById("tps_chrono");
+let resetbtn = document.getElementById("reset");
+let stopbtn = document.getElementById("stop");
+let startbtn = document.getElementById("start");
+
+let heures_chrono = 0;
+let minutes_chrono = 0;
+let secondes_chrono = 0;
+
+let timeOut;
+
+let estArrete = true;
+
+const demarre = () => {
+  if (estArrete) {
+    estArrete = false;
+    chrono_defile();
+  }
+};
+
+const arrete = () => {
+  if (!estArrete) {
+    estArrete = true;
+    clearTimeout(timeOut);
+  }
+};
+
+const chrono_defile = () => {
+  if (estArrete) return;
+
+  secondes_chrono = parseInt(secondes_chrono);
+  minutes_chrono = parseInt(minutes_chrono);
+  heures_chrono = parseInt(heures_chrono);
+
+  secondes_chrono++;
+
+  if (secondes_chrono == 60) {
+    minutes_chrono++;
+    secondes_chrono = 0;
+  }
+  if (minutes_chrono == 60) {
+    heures_chrono++;
+    minutes_chrono = 0;
+  }
+
+  if (secondes_chrono < 10) {
+    secondes_chrono = "0" + secondes_chrono;
+  }
+  if (minutes_chrono < 10) {
+    minutes_chrono = "0" + minutes_chrono;
+  }
+  if (heures_chrono < 10) {
+    heures_chrono = "0" + heures_chrono;
+  }
+
+  tps_chrono.textContent = `${heures_chrono}:${minutes_chrono}:${secondes_chrono}`;
+
+  timeOut = setTimeout(chrono_defile, 1000);
+};
+
+const reset_chrono = () => {
+  tps_chrono.textContent = "00:00:00";
+  estArrete = true;
+  heures_chrono = 0;
+  minutes_chrono = 0;
+  secondes_chrono = 0;
+  clearTimeout(timeOut);
+};
+
+startbtn.addEventListener("click", demarre);
+stopbtn.addEventListener("click", arrete);
+resetbtn.addEventListener("click", reset_chrono);
