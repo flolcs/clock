@@ -114,3 +114,28 @@ const reset_chrono = () => {
 startbtn.addEventListener("click", demarre);
 stopbtn.addEventListener("click", arrete);
 resetbtn.addEventListener("click", reset_chrono);
+
+// MINUTEUR
+const text_minuteur = document.querySelector(".text_minuteur");
+
+function getMinuteur() {
+  const now = new Date().getTime();
+  const countdownDate = new Date("January 1, 2025").getTime();
+
+  const distanceBase = countdownDate - now;
+
+  const days_minuteur = Math.floor(distanceBase / (1000 * 60 * 60 * 24));
+  const hours_minuteur = Math.floor(
+    (distanceBase % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  const minutes_minuteur = Math.floor(
+    (distanceBase % (1000 * 60 * 60)) / (1000 * 60)
+  );
+  const seconds_minuteur = Math.floor((distanceBase % (1000 * 60)) / 1000);
+
+  text_minuteur.innerText = `${days_minuteur}j ${hours_minuteur}h ${minutes_minuteur}m ${seconds_minuteur}s`;
+}
+
+const countdownInterval = setInterval(() => {
+  getMinuteur();
+}, 1000);

@@ -204,6 +204,34 @@ span {
   font-size: 1.4em;
 }
 
+/*=============== MINUTEUR ===============*/
+#minuteur {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#date {
+  height: 50px;
+  width: 190px;
+  font-size: 1.3em;
+  font-weight: 300;
+  background-color: transparent;
+  border: solid 3px var(--color2);
+  border-radius: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--color2);
+}
+
+.text_minuteur {
+  width: 100%;
+  font-size: 2.5em;
+  text-align: center;
+  letter-spacing: 5px;
+}
 
 
 /*=============== RESPONSIVE ===============*/
