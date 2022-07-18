@@ -213,19 +213,6 @@ span {
   justify-content: space-between;
 }
 
-#date {
-  height: 50px;
-  width: 190px;
-  font-size: 1.3em;
-  font-weight: 300;
-  background-color: transparent;
-  border: solid 3px var(--color2);
-  border-radius: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: var(--color2);
-}
-
 .text_minuteur {
   width: 100%;
   font-size: 2.5em;
@@ -236,7 +223,28 @@ span {
 
 /*=============== RESPONSIVE ===============*/
 @media (min-width: 0px) and (max-width: 644px) {
+  main {
+    height: 200vh;
+  }
+
   #time {
     flex-direction: column;
-}
+  }
+  .text_minuteur {
+    font-size: 1.5em
+  }
+  #btn_chrono {
+    width: 300px;
+  }
+  #minuteur {
+    width: 300px;
+  }
+  .button_chrono {
+    width: 75px;
+    height: 75px;
+  }
+  .loader {
+    top: 40%;
+    left: 40%;
+  }
 } 

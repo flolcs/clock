@@ -135,7 +135,6 @@ function getMinuteur() {
 
   text_minuteur.innerText = `${days_minuteur}j ${hours_minuteur}h ${minutes_minuteur}m ${seconds_minuteur}s`;
 }
-
 const countdownInterval = setInterval(() => {
   getMinuteur();
 }, 1000);
